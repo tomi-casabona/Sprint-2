@@ -272,3 +272,76 @@ const mascota = {
 }
 const binomio = {...dueño,...mascota};
 console.log(binomio);
+
+// Exercici 1.5: Array transformations
+// Exercici 1
+// Map: Teniu un array de números [1, 2, 3, 4]. Crea una nova array que contingui el quadrat de cada número.
+
+console.log("Exercici 1.5: Array transformations 1");
+let arrayNums = [1,2,3,4];
+let arrayNumCuadrados = [];
+
+function arrayCuadrado(array){
+
+  array.forEach(e => {
+    arrayNumCuadrados.push(Math.pow(e,2));
+  });
+  console.log(arrayNumCuadrados)
+}
+arrayCuadrado(arrayNums);
+// Exercici 2
+// Filter: Teniu una array de números [1, 2, 3, 4]. Crea una nova array que només contingui els números parells.
+console.log("Exercici 1.5: Array transformations 2");
+
+function numerosPares(array){
+  let numPar = [];
+  let numImpar = [];
+  array.forEach(e => {
+    e%2>0?numImpar.push(e):numPar.push(e);//no se como hacer para que en caso de impar, no haga nada, ...
+  })
+  console.log(numPar)
+}
+numerosPares(arrayNums);
+
+// Exercici 3
+// Find: Teniu una array de números [1, 10 , 8, 11]. Utilitza la funció find per a trobar el primer número que és major a 10.
+console.log("Exercici 1.5: Array transformations 3");
+let arrayEj3 = [1,10,8,11];
+function mayorA10(a) {
+ if(a>10){
+  return a;
+ }        
+   
+}
+console.log(arrayEj3.find(mayorA10));
+// Exercici 4
+// Reduce: Teniu una array de números [13, 7, 8, 21]. Fes servir la funció reduce per a calcular la suma total dels números.
+console.log("Exercici 1.5: Array transformations 4");
+let arrayEj4 = [12,7,8,21];
+console.log(arrayEj4.reduce((valorActual,valoracumulado)=>valorActual+valoracumulado));
+
+
+// Exercici 5
+// Donat un array "[ 1, 3, 7, 10 ,15, 17, 11, 5, 8, 12, 9 ]", crea una funció en una sola línia que faci el següent:
+let array5 = [ 1, 3, 7, 10 ,15, 17, 11, 5, 8, 12, 9 ];
+// - Filtra els nombres majors o iguals a 10.
+console.log("Exercici 1.5: Array transformations 5.1");
+let mayores10 = array5.filter(n => n>=10);
+console.log(mayores10)
+
+// - Multiplica cada nombre filtrat per 2.
+console.log("Exercici 1.5: Array transformations 5.2");
+mayores10 = (array5.filter(n => n>=10)).map(n=>n*2);
+console.log(mayores10)
+// - Calcula la suma dels nombres filtrats i multiplicats per 2.
+console.log("Exercici 1.5: Array transformations 5.3");
+mayores10 = ((array5.filter(n => n>=10)).map(n=>n*2)).reduce((valorActual,valoracumulado)=>valorActual+valoracumulado);
+console.log(mayores10);
+// - La funció ha de retornar el resultat de la suma.
+
+// Exercici 6
+// Every / Some: Usa every i some per a determinar si tots o alguns dels elements de l'array [11, 12, 13, 14] són majors que 10, respectivament
+console.log("Exercici 1.5: Array transformations 6");
+let arrayE =  [11, 12, 13, 14];
+console.log("some > 10 ? " + arrayE.some(n => n>10));
+console.log("every < 10 ? " + arrayE.some(n => n>10));
