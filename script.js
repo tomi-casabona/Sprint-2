@@ -196,3 +196,79 @@ function pasarCadena(string, callback) {
 }
 pasarCadena(nombre, imprimir);
 
+// Exercici 1.4: Rest & Spread operators
+// Exercici 1
+// Operador Spread en Arrays: Crea dues arrays, array1 i array2. Utilitza l'operador spread per a crear una tercera array que contingui tots els elements de array1 i array2.
+console.log("Ejercicio 1.4 Rest & spread - 1");
+
+let array1 = [0,2,4,6,8];
+let array2 = [1,3,5,7,9];
+let array3 = [...array1, ...array2];
+console.log(array3);
+// Exercici 2
+// Operador Rest en Funcions: Crea una funció 'suma' que utilitzi l'operador rest per a acceptar un nombre indeterminat d'arguments i retornar la seva suma.
+console.log("Ejercicio 1.4 Rest & spread - 2");
+
+function sumaTotal (...args){
+  let total = 0
+  for (const arg of args) {
+    
+    total += arg;
+    console.log("rest "+arg) ;
+  } 
+
+  console.log(total)
+}
+sumaTotal(1,2,3,4);
+
+// Nivell 2
+
+
+// Exercici 3
+// Copiant objectes amb Spread: Crea un objecte 'objecte1'. Després crea un segon objecte, 'objecte2', que sigui una còpia de 'objecte1' utilitzant l'operador spread. Canvia una propietat de 'objecte2' i comprova que 'objecte1' no ha canviat.
+console.log("Ejercicio 1.4 Rest & spread - 3");
+
+let object1 = new Object();
+  object1.height= 1.80 ;
+  object1.weight= 80 ;
+
+let object2 = {...object1};
+object2.height=1.95;
+console.log(object1.height + " " + object2.height);
+
+
+// Exercici 4
+// Rest en Destructuring: Crea una array amb diversos elements. Utilitza destructuring i l'operador rest per a assignar els primers dos elements a variables, i després assignar la resta dels elements a una tercera variable.
+console.log("Ejercicio 1.4 Rest & spread - 4");
+
+arrayPibes = ["tomas", "facundo", "martin","luca","leo"];
+var [ var1, var2, ...var3] = arrayPibes;
+console.log(var1);
+console.log(var2);
+console.log(var3);
+
+// Exercici 5
+// Spread en Funcions: Crea una funció que accepti tres arguments. Després, crea una array amb tres elements i crida la funció utilitzant l'operador spread amb aquesta array.
+console.log("Ejercicio 1.4 Rest & spread - 5");
+
+function accept3Elements(a,b,c){
+  console.log(a);
+  console.log(b);
+  console.log(c); 
+};
+let arrayDeTres = [1,2,3];
+accept3Elements(...arrayDeTres);
+
+// Exercici 6
+// Fusionant Objectes amb Spread: Crea dos objectes amb propietats diferents. Utilitza l'operador spread per a fusionar aquests dos objectes en un de nou.
+console.log("Ejercicio 1.4 Rest & spread - 6");
+const dueño = {
+altura:1.90,
+peso:80, 
+}
+const mascota = {
+  raza: "dobermann",
+  color: "negro",
+}
+const binomio = {...dueño,...mascota};
+console.log(binomio);
