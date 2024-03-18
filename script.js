@@ -155,14 +155,16 @@ calculadora("ernesto", "eusebio", callbackfunction);
 console.log("Ejercicio 1.3 Callbacks - 3");
 
 function esperarSaludar(nom, callback) {
-  setTimeout(callback (nom), 2000);
+  setTimeout(function () {
+    callback(nom)
+  }, 2000);
 };
 
-function mostrarNom(nom) {
-  console.log(nom + " desde el async callback");
+function saludar(n){
+  console.log(n);
 }
 
-esperarSaludar("Jacinta", mostrarNom);
+esperarSaludar("tomi 2sec Ejercicio 3.3", saludar);
 
 // Exercici 4
 // Callbacks amb arrays: Escriu una funció processarElements que accepti dos paràmetres: un array i una funció de callback. La funció processarElements ha d'invocar la funció de callback per cada element de l'array.
@@ -383,9 +385,85 @@ console.log(n)
 // Nivell 3
 // Exercici 6
 // for-of amb index: Utilitza un bucle for-of per a imprimir a la consola cada element de l'array i la seva posició (index): let noms = ['Anna', 'Bernat', 'Clara']
+
 let nombres = ['Anna', 'Bernat', 'Clara'];
-for (let [index, n] of nombres) {
-  console.log("index: "+ index + " nombre: "+ n)
-};
+
+for (const [index, nom] of nombres.entries()) {
+  console.log( "index: " + index + " nombre: " + nom);
+}
+
+// Exercici 1.7: Promises & Async/Await
+
+// Exercici 1
+// Creació d'una Promesa: Crea una promesa que es resolgui després de 2 segons i que retorni la cadena de text 'Hola, món'.
+
+let myPromise = new Promise((resolve, reject) => {
+setTimeout( ()=>{ 
+  resolve("hola mon promise 2 sec ejerecicio 7.1 y 7.2");
+ }, 2000);
+}
+);
+
+// Exercici 2
+// Utilització d'una Promesa: Utilitza la promesa creada en l'exercici anterior. Crea un .then que imprimeixi el resultat a la consola.
+
+myPromise.then( (response) => console.log(response));
+
+// Exercici 3
+// Promesa amb reject: Crea una promesa que es resolgui després de 2 segons si l'input és igual a 'Hola', i que la rebutgi si l'input és qualsevol altra cosa.
+
+let otherPromise = new Promise((resolve, reject) => {
+  let input = prompt("Hola");
+  if (input != "Hola"){
+    setTimeout(() => {
+      reject(new Error("no coincide con Hola"));
+  },2000)};
+
+  if (input == "Hola"){
+    setTimeout(()=>{
+   resolve(input + " amigo");
+  },2000)}});
+
+  otherPromise.then((response) => {console.log(response)});
+  otherPromise.catch((err)=>{ console.log(err)});
 
 
+
+// Exercici 4
+// Ús de async/await: Escriu una funció asíncrona que utilitzi la funció await per a esperar el resultat de la promesa creada a l'exercici 1, i que després imprimeixi aquest resultat a la consola.
+
+ async function functAsync(){
+   await myPromise.then((resolve)=>{
+    console.log( resolve +" Ejercicio 4")
+  });
+ }
+ functAsync();
+
+// // Exercici 5
+// // Gestió d'errors amb async/await: Modifica la funció de l'exercici 4 per a que capturi qualsevol possible error utilitzant un bloc try/catch.
+
+async function functAsync2(){
+  try {
+  await myPromise.then((resolve)=>{
+   console.log( resolve +" Ejercicio 5")
+ });
+}
+catch(e){
+  myPromise.catch((e) => console.log(e));
+}
+}
+
+functAsync2();
+
+
+// Exercici 6
+// Promise.all: Crea dues promeses que es resolguin després de 2 i 3 segons, respectivament. Utilitza Promise.all per a esperar que ambdues promeses es resolguin, i imprimeix els resultats a la consola.
+
+let p1 = new Promise((resolve)=>{
+  setTimeout(()=>{resolve("promise 2 sec ejercicio 6")},2000)
+});
+let p2 = new Promise((resolve)=>{
+  setTimeout(()=>{resolve("promise 3sec ejercicio 6")},3000)
+});
+
+Promise.all([p1,p2]).then((values) => {console.log(values)});g
