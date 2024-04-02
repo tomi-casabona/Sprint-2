@@ -466,4 +466,4 @@ let p2 = new Promise((resolve)=>{
   setTimeout(()=>{resolve("promise 3sec ejercicio 6")},3000)
 });
 
-Promise.all([p1,p2]).then((values) => {console.log(values)});g
+Promise.all([p1,p2]).then((values) => {console.log(values)});
